@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function rejectAfterOneSecond() {
+            return new Promise((_, reject) => {
+                setTimeout(() => {
+                reject(new Error("Something went wrong"));
+                }, 1000); // 1000 milliseconds = 1 second
+            });
+        }
+
+        rejectAfterOneSecond()
+        .then((result) => {
+            console.log("This will not run because the promise is rejected.");
+        })
+        .catch((error) => {
+            console.error("Promise rejected:", error.message); // Logs: Something went wrong
+        });
+
+
+
+    </script>
+</body>
+</html>

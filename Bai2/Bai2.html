@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai2</title>
+</head>
+<body>
+    BAi 2
+    <script>
+        /** Write a function that returns a Promise resolving with the number 10 after 1 second**/
+        const resolvePromise = function resolveAfterOneSecond(){
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(10)
+                }, 1000)
+            })
+        }
+        console.log("Promise đã được tạo. Đang chờ để được xử lý...");
+
+        resolvePromise.then((message) => {
+            console.log("Promise đã xử lý xong!");
+            console.log(message); 
+        }).catch((error) => {
+        // .catch() sẽ được gọi nếu promise bị reject (từ chối),
+        // ví dụ, bằng cách gọi reject(new Error("Đã có lỗi xảy ra"));
+        console.error("Promise đã bị từ chối:", error);
+        })
+    </script>
+</body>
+</html>
