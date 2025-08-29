@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1</title>
+</head>
+<body>
+    <script>
+        // ------------------ Bài 1 ------------------
+        console.log("Bài 1");
+
+        const helloPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Hello Async cua bai 1");
+            }, 2000);
+        });
+
+        console.log("Promise đã được tạo. Đang chờ để được xử lý...");
+
+        helloPromise
+            .then((message) => {
+                console.log("Promise đã xử lý xong!");
+                console.log(message);
+            })
+            .catch((error) => {
+                console.error("Promise đã bị từ chối:", error);
+            });
+
+        // ------------------ Bài 2 ------------------
+        console.log("Bài 2");
+
+        const resolvePromise = function resolveAfterOneSecond() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(10 + " cua bai 2");
+                }, 1000);
+            });
+        };
+
+        console.log("Promise đã được tạo. Đang chờ để được xử lý...");
+
+        resolvePromise()
+            .then((message) => {
+                console.log("Promise đã xử lý xong!");
+                console.log(message);
+            })
+            .catch((error) => {
+                console.error("Promise đã bị từ chối:", error);
+            });
+
+        // ------------------ Bài 3 ------------------
+        console.log("Bài 3");
+
+        function rejectAfterOneSecond() {
+            return new Promise((_, reject) => {
+                setTimeout(() => {
+                    reject(new Error("Something went wrong bai 3"));
+                }, 1000);
+            });
+        }
+
+        // Handle the rejected promise
+        rejectAfterOneSecond()
+            .then((result) => {
+                console.log("This will not run because the promise is rejected.");
+            })
+            .catch((error) => {
+                console.error("Promise đã bị từ chối:", error.message);
+            });
+    </script>
+</body>
+</html>
